@@ -540,6 +540,8 @@ function getproperty(F::Hessenberg, d::Symbol)
     return getfield(F, d)
 end
 
+size(Q::HessenbergQ, dim::Integer) = size(getfield(Q, :factors), dim == 2 ? 1 : dim)
+
 Base.propertynames(F::Hessenberg, private::Bool=false) =
     (:Q, :H, :μ, (private ? (:τ, :factors, :uplo) : ())...)
 
